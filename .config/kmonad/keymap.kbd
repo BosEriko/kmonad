@@ -1,5 +1,5 @@
 (defcfg
-  input  (device-file "/dev/input/by-id/usb-8BitDo_8BitDo_Retro_Keyboard-if01-event-kbd")
+  input  (device-file "/dev/input/by-id/usb-8BitDo_8BitDo_Retro_Keyboard-if01-event-kbd")  ;; Ensure the device path is correct
   output (uinput-sink "My Hotkeys")
   fallthrough true
 )
@@ -15,7 +15,31 @@
 (deflayer default
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  lctl a    s    d    f    g    h    j    k    l    ;    '    ret
+  (layer-toggle with-lctl) a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  grv  lmet lalt           spc            ralt rmet cmp  rctl
+  grv  lmet (layer-toggle with-lalt) spc (layer-toggle with-ralt) rmet cmp  rctl
+)
+
+(deflayer with-ralt
+  A-grv  A-1    A-2    A-3    A-4    A-5    A-6    A-7    A-8   A-9   A-0   A--    A-=    A-bspc
+  A-tab  A-q    A-w    A-e    A-r    A-t    A-y    A-u    A-i   A-o   A-p   A-[    A-]    A-\
+  A-caps A-a    A-s    A-d    A-f    A-g    left   down   up    right A-;   A-'    A-ret
+  A-lsft A-z    A-x    A-c    A-v    A-b    A-n    A-m    A-,   A-.   A-/   A-rsft
+  A-lctl A-lmet A-lalt           A-spc            A-ralt A-rmet A-cmp  A-rctl
+)
+
+(deflayer with-lalt
+  A-grv  A-1    A-2    A-3    A-4    A-5    A-6    A-7    A-8   A-9   A-0   A--    A-=    A-bspc
+  A-tab  A-q    A-w    A-e    A-r    A-t    A-y    A-u    A-i   A-o   A-p   A-[    A-]    A-\
+  A-caps C-a    A-s    A-d    A-f    A-g    A-h    A-j    A-k   A-l   A-;   A-'    A-ret
+  A-lsft A-z    C-x    C-c    C-v    A-b    A-n    A-m    A-,   A-.   A-/   A-rsft
+  A-lctl A-lmet A-lalt           A-spc            A-ralt A-rmet A-cmp  A-rctl
+)
+
+(deflayer with-lctl
+  C-grv  C-1    C-2    C-3    C-4    C-5    C-6    C-7    C-8   C-9   C-0   C--    C-=    C-bspc
+  C-tab  C-q    C-w    C-e    C-r    C-t    C-y    C-u    C-i   C-o   C-p   esc    C-]    C-\
+  C-caps C-a    C-s    C-d    C-f    C-g    C-h    C-j    C-k   C-l   C-;   C-'    C-ret
+  C-lsft C-z    C-x    C-c    C-v    C-b    C-n    C-m    C-,   C-.   C-/   C-rsft
+  C-lctl C-lmet C-lalt           C-spc            C-ralt C-rmet C-cmp  C-rctl
 )
