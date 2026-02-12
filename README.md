@@ -3,3 +3,9 @@
 2. Create kmonad Config on [~/.config/kmonad/keymap.kbd](.config/kmonad/keymap.kbd).
 3. Make sure the the path `defcfg input` on `.config/kmonad/keymap.kbd` is the correct keyboard. Use `ls /dev/input/by-id/` to check the proper ID.
 4. Make sure kmonad is being started properly inside [Sway config](https://github.com/BosEriko/sway/blob/main/.config/sway/config).
+
+## Install the config
+Make sure to remove or move your current `Kmonad` directory
+```sh
+git clone https://github.com/BosEriko/kmonad.git ~/.config/kmonad
+```
