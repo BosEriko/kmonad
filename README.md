@@ -8,8 +8,7 @@ home.packages = with pkgs; [
 ];
 ```
 
-## Install the config
-Make sure to remove or move your current `Kmonad` directory
+## Clone the Repository
 ```sh
 git clone https://github.com/BosEriko/kmonad.git ~/.config/kmonad
 ```
