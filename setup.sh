@@ -9,15 +9,13 @@
 set -e
 
 ############################################
-# 1. Check arguments
+# 1. Determine script directory
 ############################################
 
-if [ -z "$1" ]; then
-    echo "Usage: $0 <kmonad-config-file>"
-    exit 1
-fi
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-KBD_CONFIG="$1"
+# Default config file (same directory as script)
+KBD_CONFIG="$SCRIPT_DIR/keymap.kbd"
 
 ############################################
 # 2. Verify config file exists
