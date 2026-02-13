@@ -1,6 +1,12 @@
 # kmonad (Keybinds)
-1. Make sure kmonad is on your [Home Manager (Nix)](https://github.com/BosEriko/nix/blob/master/home.nix) then run `home-manager switch`.
-2. Make sure kmonad is being started properly inside [Sway config](https://github.com/BosEriko/sway/blob/main/.config/sway/config).
+Download [Nix](https://github.com/BosEriko/nix) as your package manager then install [kmonad](https://search.nixos.org/packages?channel=25.11&query=kmonad&show=kmonad).
+
+## Install kmonad
+```sh
+environment.systemPackages = [
+  pkgs.kmonad
+];
+```
 
 ## Install the config
 Make sure to remove or move your current `Kmonad` directory
