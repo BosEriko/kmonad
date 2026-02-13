@@ -3,7 +3,7 @@ Download [Nix](https://github.com/BosEriko/nix) as your package manager then ins
 
 ## Install kmonad
 ```sh
-environment.systemPackages = [
+home.packages = with pkgs; [
   pkgs.kmonad
 ];
 ```
