@@ -39,7 +39,7 @@
 (deflayer with-lctl
   C-grv                       C-1   C-2   C-3   C-4   C-5   C-6   C-7   C-8   C-9   C-0   C--   C-=   C-bspc
   C-tab                       C-q   C-w   C-e   C-r   C-t   C-y   C-u   C-i   C-o   C-p   esc   C-]   C-\
-  _                           C-a   C-s   C-d   C-f   C-g   C-h   C-j   C-k   C-l   C-;   C-'   C-ret
-  C-lsft                      C-z   C-x   C-c   C-v   C-b   C-n   C-m   C-,   C-.   C-/   C-rsft
+  _                           A-a   C-s   C-d   C-f   C-g   C-h   C-j   C-k   C-l   C-;   C-'   C-ret
+  C-lsft                      C-z   A-x   A-c   A-v   C-b   C-n   C-m   C-,   C-.   C-/   C-rsft
   C-grv                       C-lmet _                            C-spc       _                       C-rmet C-cmp C-rctl
 )
