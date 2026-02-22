@@ -12,3 +12,11 @@ home.packages = with pkgs; [
 ```sh
 git clone https://github.com/BosEriko/kmonad.git ~/.config/kmonad
 ```
+
+## Rofi
+Install Rofi for quick navigation and run the following:
+```sh
+mkdir -p ~/.config/rofi/themes
+ln -s ~/.config/kmonad/default.rasi ~/.config/rofi/themes/default.rasi
+ln -s ~/.config/kmonad/config.rasi ~/.config/rofi/config.rasi
+```

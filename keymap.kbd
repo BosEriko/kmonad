@@ -21,11 +21,11 @@
 )
 
 (deflayer with-ralt
-  A-grv                       A-1   A-2   A-3   A-4   A-5   A-6   A-7   A-8   A-9   A-0   A--   A-=   A-bspc
+  A-grv                       _     _     _     _     _     _     _     _     _     _     A--   A-=   A-bspc
   A-tab                       A-q   A-w   A-e   A-r   A-t   A-y   A-u   A-i   A-o   A-p   A-[   A-]   A-\
   _                           A-a   A-s   A-d   A-f   A-g   left  down  up    right A-;   A-'   A-ret
   A-lsft                      A-z   A-x   A-c   A-v   A-b   A-n   A-m   A-,   A-.   A-/   A-rsft
-  A-grv                       A-lmet _                             A-spc      _                       A-rmet A-cmp A-rctl
+  A-grv                       A-lmet _                            C-A-spc     _                       A-rmet A-cmp A-rctl
 )
 
 (deflayer with-lalt
@@ -39,7 +39,7 @@
 (deflayer with-lctl
   C-grv                       C-1   C-2   C-3   C-4   C-5   C-6   C-7   C-8   C-9   C-0   C--   C-=   C-bspc
   C-tab                       C-q   C-w   C-e   C-r   C-t   C-y   C-u   C-i   C-o   C-p   esc   C-]   C-\
-  _                           A-a   C-s   C-d   C-f   C-g   C-h   C-j   C-k   C-l   C-;   C-'   C-ret
-  C-lsft                      C-z   A-x   A-c   A-v   C-b   C-n   C-m   C-,   C-.   C-/   C-rsft
+  _                           C-a   C-s   C-d   C-f   C-g   C-h   C-j   C-k   C-l   C-;   C-'   C-ret
+  C-lsft                      C-z   C-x   C-c   C-v   C-b   C-n   C-m   C-,   C-.   C-/   C-rsft
   C-grv                       C-lmet _                            C-spc       _                       C-rmet C-cmp C-rctl
 )
