@@ -1,10 +1,10 @@
 # kmonad (Keybinds)
-Download [Nix](https://github.com/BosEriko/nix) as your package manager then install [kmonad](https://search.nixos.org/packages?&query=kmonad&show=kmonad) and [rofi](https://search.nixos.org/packages?&query=rofi&show=rofi).
+Download [Nix](https://github.com/BosEriko/nix) as your package manager then install [kmonad](https://search.nixos.org/packages?&query=kmonad&show=kmonad).
 
-## Install kmonad and rofi
+## Install kmonad and its dependencies
 ```sh
-nix-env -iA nixos.kmonad
-nix-env -iA nixos.rofi
+nix-env -iA nixpkgs.kmonad
+nix-env -iA nixpkgs.rofi
 ```
 
 ## Clone the Repository
