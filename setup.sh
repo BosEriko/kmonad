@@ -34,10 +34,18 @@ echo "Searching for keyboard devices..."
 
 KEYBOARD_DEVICES=()
 
-for dev in /dev/input/event*; do
-  if udevadm info --query=property --name="$dev" 2>/dev/null | grep -q '^ID_INPUT_KEYBOARD=1'; then
-    KEYBOARD_DEVICES+=("$dev")
-  fi
+# USB keyboards (external)
+for dev in /dev/input/by-id/*-event-kbd; do
+    if [ -e "$dev" ]; then
+        KEYBOARD_DEVICES+=("$dev")
+    fi
+done
+
+# Built-in keyboards (laptops, etc.)
+for dev in /dev/input/by-path/*-event-kbd; do
+    if [ -e "$dev" ]; then
+        KEYBOARD_DEVICES+=("$dev")
+    fi
 done
 
 ############################################
