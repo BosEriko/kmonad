@@ -17,13 +17,16 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Default config file (same directory as script)
 KBD_CONFIG="$SCRIPT_DIR/keymap.kbd"
 
+# Keyboard list file
+KEYBOARD_LIST="$SCRIPT_DIR/keyboard.list"
+
 ############################################
 # 2. Verify config file exists
 ############################################
 
 if [ ! -f "$KBD_CONFIG" ]; then
-    echo "Error: Config file '$KBD_CONFIG' does not exist."
-    exit 1
+  echo "Error: Config file '$KBD_CONFIG' does not exist."
+  exit 1
 fi
 
 ############################################
@@ -32,46 +35,51 @@ fi
 
 echo "Searching for keyboard devices..."
 
-KEYBOARD_DEVICES=()
+# Clear existing keyboard list
+>"$KEYBOARD_LIST"
 
 # USB keyboards (external)
 for dev in /dev/input/by-id/*-event-kbd; do
-    if [ -e "$dev" ]; then
-        KEYBOARD_DEVICES+=("$dev")
-    fi
+  if [ -e "$dev" ]; then
+    echo "$dev" >>"$KEYBOARD_LIST"
+  fi
 done
 
 # Built-in keyboards (laptops, etc.)
 for dev in /dev/input/by-path/*-event-kbd; do
-    if [ -e "$dev" ]; then
-        KEYBOARD_DEVICES+=("$dev")
-    fi
+  if [ -e "$dev" ]; then
+    echo "$dev" >>"$KEYBOARD_LIST"
+  fi
 done
+
+# Remove duplicates (if any)
+sort -u "$KEYBOARD_LIST" -o "$KEYBOARD_LIST"
 
 ############################################
 # 4. Check if we found any keyboards
 ############################################
 
-if [ ${#KEYBOARD_DEVICES[@]} -eq 0 ]; then
-    echo "No keyboards found."
-    exit 1
+if [ ! -s "$KEYBOARD_LIST" ]; then
+  echo "No keyboards found."
+  exit 1
 fi
 
-echo "Found ${#KEYBOARD_DEVICES[@]} keyboard(s)."
+KEYBOARD_COUNT=$(wc -l <"$KEYBOARD_LIST")
+echo "Found $KEYBOARD_COUNT keyboard(s)."
 
 ############################################
 # 5. Start KMonad for each keyboard
 ############################################
 
-for keyboard in "${KEYBOARD_DEVICES[@]}"; do
-    echo "Starting KMonad for: $keyboard"
+while IFS= read -r keyboard; do
+  echo "Starting KMonad for: $keyboard"
 
-    kmonad -w 0 \
-        --input "device-file \"$keyboard\"" \
-        "$KBD_CONFIG" &
+  kmonad -w 0 \
+    --input "device-file \"$keyboard\"" \
+    "$KBD_CONFIG" &
 
-    sleep 0.2
-done
+  sleep 0.2
+done <"$KEYBOARD_LIST"
 
 ############################################
 # 6. Done
